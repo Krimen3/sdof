@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "../../../Desktop/Новая папка (3)"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/mootimeter"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/styles.php"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/1"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/accessibility"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/font.php"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/image.php"
+		},
+		{
+			"path": "../../sdo.if-mstuca.ru/javascript.php"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Новая папка (3)"
+	}
+}
